@@ -1,0 +1,12 @@
+- hosts: localhost
+  connection: local
+
+  tasks:
+    - name: Stop existing container
+      shell: docker stop nutanix-app-container || true
+
+    - name: Remove container
+      shell: docker rm nutanix-app-container || true
+
+    - name: Run new container
+      shell: docker run -d --name nutanix-app-container -p 5001:5000 nutanix-app
